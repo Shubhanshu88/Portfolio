@@ -5,7 +5,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="wheat" />
+  <meta name="theme-color" content="rgb(247, 212, 149)" />
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
@@ -14,10 +14,63 @@
   <link rel="stylesheet" href="portfolio.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js"></script>
+  <style>
+    #loader {
+        height: 100vh;
+        width: 100vw;
+        z-index: 99999;
+        background-color: #f3f3f3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+        svg.s1 {
+          -webkit-transform-origin: 50% 65%;
+                  transform-origin: 50% 65%;
+        }
+        
+        svg.s1 polygon {
+          stroke-dasharray: 17;
+          -webkit-animation: dash 2.5s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
+                  animation: dash 2.5s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
+        }
+        
+        @-webkit-keyframes dash {
+          to {
+            stroke-dashoffset: 136;
+          }
+        }
+        
+        @keyframes dash {
+          to {
+            stroke-dashoffset: 136;
+          }
+        }
+        @-webkit-keyframes rotate {
+          100% {
+            -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+          }
+        }
+        @keyframes rotate {
+          100% {
+            -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+          }
+        }
+      @keyframes UpTransit {
+        100% { transform: translate(-100vh); }
+      }    
+  </style>
 </head>
 
-<body>
-
+<body onload="loadPage()">
+  <div id="loader">
+    <svg class="s1" id="triangle" width="100px" height="100px" viewBox="-3 -4 39 39">
+      <polygon fill="#EFEFEF" stroke="#333333" stroke-width="1" points="16,0 32,32 0,32"></polygon>
+    </svg>
+  </div>
   <div id="shift">
     <div data-depth="0.9" class="layer">
       <div id="particles-js"></div>
@@ -93,8 +146,7 @@
                 </div>
               </div>
             </div>
-
-            <div class="container partC">
+            <div class="container partC">       
               <h1 class="text-center group1 d-flex justify-content-center align-items-center">Contact</h1>
               <div class="container d-flex align-items-center justify-content-center">
                 <div class="group d-flex">
@@ -174,6 +226,15 @@
       </div>
     </div>
   </div>
+  <script>
+    var myVar;
+    function myFunction() {
+      myVar = setTimeout(loadPage, 3000);
+    }
+    function loadPage() {
+      document.getElementById("loader").style.display = "none";
+    }
+  </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -182,5 +243,4 @@
     crossorigin="anonymous"></script>
   <script src="portfolio.js"></script>
 </body>
-
 </html>
